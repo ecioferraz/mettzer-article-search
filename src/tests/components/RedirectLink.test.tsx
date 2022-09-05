@@ -18,8 +18,6 @@ describe('Components', () => {
   
   describe('<RedirectLink />', () => {
     let redirectLink: HTMLLinkElement | null | undefined;
-
-    const onClick = jest.fn();
     
     beforeEach(() => {
       act(() => {
@@ -47,12 +45,6 @@ describe('Components', () => {
 
     it('should render redirectLink\'s inner text correctly', () => {
       expect(redirectLink?.textContent).toBe('test name');
-    });
-
-    it('should render a disabled and unclickable redirectLink', () => {
-      act(() => redirectLink?.click());
-
-      expect(onClick).not.toHaveBeenCalled();
     });
   });
 });
