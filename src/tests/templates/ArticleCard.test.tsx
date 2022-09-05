@@ -45,7 +45,7 @@ describe('Templates', () => {
   
       it('should render a ArticleCard', () => {
         expect(articleCard).toBeTruthy();
-        expect(articleCard?.children.length).toBe(5);
+        expect(articleCard?.children.length).toBe(6);
       });
   
       it('should render a <TextCard /> as the article\'s title', () => {
