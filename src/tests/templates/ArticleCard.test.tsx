@@ -89,7 +89,7 @@ describe('Templates', () => {
         expect(articleSource?.textContent).toBe('Fontes: \n');
       });
   
-      it('should render a <ExternalLink /> as the article\'s source links',
+      it('should render two <ExternalLink /> as the article\'s source links',
         () => {
           const articalSourceLinkOne =
             articleCard?.querySelector(ARTICLE_SOURCE_LINK_1);
