@@ -20,49 +20,99 @@ describe('Components', () => {
 
     const onClick = jest.fn();
 
-    beforeEach(async () => {
-      act(() =>
-        root?.render(
-          <Button
-            className='test className'
-            handleClick={onClick}
-            name='test name'
-            type='button'
-          />
-        )
-      );
-
-      button = container?.querySelector('button');
+    describe('as text button name', () => {
+      beforeEach(async () => {
+        act(() =>
+          root?.render(
+            <Button
+              className='test className'
+              handleClick={onClick}
+              name='test name'
+              type='button'
+            />
+          )
+        );
+  
+        button = container?.querySelector('button');
+      });
+  
+      afterEach(() => (button = null));
+  
+      it('should render a button', () => {
+        expect(button).toBeTruthy();
+      });
+  
+      it('should render button\'s properties correctly', () => {
+        expect(button?.getAttribute('class')).toBe('test className');
+        expect(button?.getAttribute('name')).toBe('test name');
+        expect(button?.getAttribute('type')).toBe('button');
+      });
+  
+      it('should render a clickable button', () => {
+        expect(button).not.toBeDisabled();
+  
+        act(() => button?.click());
+  
+        expect(onClick).toHaveBeenCalled();
+      });
+  
+      it('should render a disabled and unclickable button', () => {
+        expect(button).not.toBeDisabled();
+        button && (button.disabled = true);
+        expect(button).toBeDisabled();
+  
+        act(() => button?.click());
+  
+        expect(onClick).not.toHaveBeenCalled();
+      });
     });
 
-    afterEach(() => (button = null));
-
-    it('should render a button', () => {
-      expect(button).toBeTruthy();
+    describe('as unfavorited IconType button', () => {
+      beforeEach(async () => {
+        act(() =>
+          root?.render(
+            <Button
+              className='test className'
+              handleClick={onClick}
+              name='unfav'
+              type='button'
+            />
+          )
+        );
+    
+        button = container?.querySelector('button');
+      });
+    
+      afterEach(() => (button = null));
+    
+      it('should render a unfavorited Icon as a button\'s inner content',
+        () => {
+          expect(button?.children[0]).not.toHaveAttribute('color');
+        });
     });
 
-    it('should render button\'s properties correctly', () => {
-      expect(button?.getAttribute('class')).toBe('test className');
-      expect(button?.getAttribute('name')).toBe('test name');
-      expect(button?.getAttribute('type')).toBe('button');
-    });
-
-    it('should render a clickable button', () => {
-      expect(button).not.toBeDisabled();
-
-      act(() => button?.click());
-
-      expect(onClick).toHaveBeenCalled();
-    });
-
-    it('should render a disabled and unclickable button', () => {
-      expect(button).not.toBeDisabled();
-      button && (button.disabled = true);
-      expect(button).toBeDisabled();
-
-      act(() => button?.click());
-
-      expect(onClick).not.toHaveBeenCalled();
+    describe('as favorited IconType button', () => {
+      beforeEach(async () => {
+        act(() =>
+          root?.render(
+            <Button
+              className='test className'
+              handleClick={onClick}
+              name='fav'
+              type='button'
+            />
+          )
+        );
+    
+        button = container?.querySelector('button');
+      });
+    
+      afterEach(() => (button = null));
+    
+      it('should render a unfavorited Icon as a button\'s inner content',
+        () => {
+          expect(button?.children[0]).toHaveAttribute('color');
+        });
     });
   });
 });
