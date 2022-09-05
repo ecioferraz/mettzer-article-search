@@ -9,8 +9,16 @@ export default function Button({
   name,
   type,
 }: IButton) {
-  const handleButtonName = name === 'fav'
-    ? <AiFillStar color='#FFF38C' /> : <AiOutlineStar />;
+  const handleButtonName = () => {
+    switch (name) {
+    case 'fav':
+      return <AiFillStar color='#FFF38C' title='fav' />;
+    case 'unfav':
+      return <AiOutlineStar title='unfav' />;
+    default:
+      return name;
+    }
+  };
 
   return (
     <button
@@ -20,7 +28,7 @@ export default function Button({
       onClick={handleClick}
       type={type}
     >
-      {handleButtonName}
+      {handleButtonName()}
     </button>
   );
 }
