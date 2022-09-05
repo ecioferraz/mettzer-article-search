@@ -1,5 +1,5 @@
-import React from 'react';
-import { ExternalLink, TextCard } from '../../components';
+import React, { useState } from 'react';
+import { Button, ExternalLink, TextCard } from '../../components';
 
 
 interface IArticleCard {
@@ -17,12 +17,22 @@ export default function ArticleCard({
   type,
   urls,
 }: IArticleCard) {
+  const [favorite, setFavorite] = useState(false);
+
+  const handleFav = () => setFavorite(!favorite);
+
   return (
     <div className='article-card'>
       <TextCard
         as='h2'
         className='article-title'
         text={title}
+      />
+      <Button
+        className='fav-btn'
+        name={favorite ? 'fav' : 'unfav'}
+        type='button'
+        handleClick={handleFav}
       />
       <TextCard
         as='p'
