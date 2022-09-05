@@ -16,17 +16,18 @@ describe('Components', () => {
   afterEach(() => act(() => root?.unmount()));
 
   describe('<TextCard />', () => {
-    let textCard: HTMLParagraphElement | HTMLHeadingElement | null | undefined;
+    let textCard:
+      | HTMLParagraphElement
+      | HTMLHeadingElement
+      | HTMLSpanElement
+      | null
+      | undefined;
 
     describe('as heading element', () => {
       beforeEach(() => {
         act(() => {
           root?.render(
-            <TextCard
-              as='h1'
-              className='test className'
-              text='test text'
-            />
+            <TextCard as='h1' className='test className' text='test text' />
           );
         });
 
@@ -74,6 +75,35 @@ describe('Components', () => {
       it('should render a paragraph element inside of the div', () => {
         expect(textCard?.className).toBe('test className');
         expect(textCard?.tagName).toBe('P');
+        expect(textCard?.textContent).toBe('test text');
+      });
+    });
+
+    describe('as default span element', () => {
+      beforeEach(() => {
+        act(() => {
+          root?.render(
+            TextCard({
+              className: 'test className',
+              text: 'test text',
+            })
+          );
+        });
+
+        textCard = container?.querySelector('span');
+      });
+
+      afterEach(() => {
+        textCard = null;
+      });
+
+      it('should render a div', () => {
+        expect(textCard).toBeTruthy();
+      });
+
+      it('should render a paragraph element inside of the div', () => {
+        expect(textCard?.className).toBe('test className');
+        expect(textCard?.tagName).toBe('SPAN');
         expect(textCard?.textContent).toBe('test text');
       });
     });
