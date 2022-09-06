@@ -33,6 +33,7 @@ describe('Templates', () => {
             <ArticleCard
               authors={['test author1', 'test author2']}
               description='test description'
+              id='test id'
               title='test title'
               type='test type'
               urls={['test url1', 'test url2']}
@@ -110,6 +111,7 @@ describe('Templates', () => {
             <ArticleCard
               authors={['test author1', 'test author2']}
               description='test description'
+              id='test id'
               title='test title'
               type='test type'
               urls={['test url']}
