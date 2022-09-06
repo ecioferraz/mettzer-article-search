@@ -12,9 +12,9 @@ export default function Button({
   const handleButtonName = () => {
     switch (name) {
     case 'fav':
-      return <AiFillStar color='#FFF38C' title='fav' />;
+      return <AiFillStar color='#FFF38C' />;
     case 'unfav':
-      return <AiOutlineStar title='unfav' />;
+      return <AiOutlineStar />;
     default:
       return name;
     }
