@@ -1,25 +1,43 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, ExternalLink, TextCard } from '../../components';
-
-
-interface IArticleCard {
- authors: string[];
- description: string;
- title: string;
- type: string;
- urls: string[];
-}
+import { IArticleCard } from '../../interfaces';
+import {
+  addArticle,
+  readFavoriteArticles,
+  removeArticle,
+} from '../../services/localStorage';
 
 export default function ArticleCard({
   authors,
   description,
+  id,
   title,
   type,
   urls,
 }: IArticleCard) {
-  const [favorite, setFavorite] = useState(false);
+  const [favorite, setFavorite] = useState(
+    readFavoriteArticles().some((article) => article.id === id),
+  );
 
-  const handleFav = () => setFavorite(!favorite);
+  const article = {
+    authors,
+    description,
+    id,
+    title,
+    type,
+    urls,
+  };
+
+  const handleFav = () => {
+    favorite ? removeArticle(article) : addArticle(article);
+    setFavorite(!favorite);
+  };
+
+  useEffect(() => {
+    if (favorite) {
+      setFavorite(true);
+    }
+  }, []);
 
   return (
     <div className='article-card'>
