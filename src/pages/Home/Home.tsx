@@ -23,15 +23,6 @@ export default function Home() {
     }
   }, [search, page]);
 
-  useEffect(() => {
-    const favorites =
-      JSON.parse(localStorage.getItem('articles') as string);
-
-    if (!favorites) {
-      localStorage.setItem('favorite_articles', JSON.stringify([]));
-    }
-  });
-
   return (
     <main>
       <TextInput
@@ -73,7 +64,7 @@ export default function Home() {
       />
       <Button
         className='next-btn'
-        disabled={!search}
+        disabled={!search || articles.length < 10}
         handleClick={() => setPage((currentPage) => currentPage + 1)}
         name='Próxima'
         type='button'
