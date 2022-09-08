@@ -4,6 +4,7 @@ import { act } from 'react-dom/test-utils';
 import { ArticleCard } from '../../templates';
 
 const ARTICLE_TITLE = 'h2[class="article-title"]';
+const TOGGLE_FAVORITE = 'button[class="fav-btn"]';
 const ARTICLE_TYPE = 'p[class="article-type"]';
 const ARTICLE_AUTHORS = 'p[class="article-authors"';
 const ARTICLE_DESCRIPTION = 'p[class="article-description"';
@@ -24,7 +25,7 @@ describe('Templates', () => {
   afterAll(() => act(() => root?.unmount()));
 
   describe('<ArticleCard />', () => {
-    let articleCard: HTMLDivElement | null | undefined;
+    let articleCard: HTMLElement | null | undefined;
 
     describe('as multiple url sources', () => {
       beforeEach(() => {
@@ -56,7 +57,24 @@ describe('Templates', () => {
         expect(articleTitle).toBeInstanceOf(HTMLHeadingElement);
         expect(articleTitle?.textContent).toBe('test title');
       });
-  
+
+      it('should render a toggle favorite <Button />', () => {
+        const favBtn = articleCard?.querySelector(
+          TOGGLE_FAVORITE,
+        ) as HTMLButtonElement;
+
+        expect(favBtn).toBeTruthy();
+        expect(favBtn?.getAttribute('name')).toBe('unfav');
+
+        act(() => favBtn?.click());
+
+        expect(favBtn?.getAttribute('name')).toBe('fav');
+
+        act(() => favBtn?.click());
+
+        expect(favBtn?.getAttribute('name')).toBe('unfav');
+      });
+
       it('should render a <TextCard /> as the article\'s type', () => {
         const articleType = articleCard?.querySelector(ARTICLE_TYPE);
   
