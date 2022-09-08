@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Button, TextCard, TextInput } from '../../components';
+import React, { FormEvent, useState } from 'react';
+import { Button, TextCard } from '../../components';
 import { IArticle } from '../../interfaces';
 import getData from '../../services/APIRequests';
-import { ArticleCard } from '../../templates';
+import { ArticleCard, SearchForm } from '../../templates';
 
 export default function Home() {
   const [articles, setArticles] = useState<IArticle[]>([]);
@@ -10,29 +10,40 @@ export default function Home() {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const getArticles = async () => {
-      setIsLoading(true);
-      const { data: { data } } = await getData(search, page);
-      setArticles(data);
-      setIsLoading(false);
-    };
+  const getArticles = async () => {
+    setIsLoading(true);
+    const { data } = await getData(search, page);
+    setArticles(data[0].data);
+    setIsLoading(false);
+  };
 
-    if (search.length > 0) {
-      getArticles();
-    }
-  }, [search, page]);
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await getArticles();
+  };
+
+  const handlePreviousPage = async () => {
+    setIsLoading(true);
+    setPage((currentPage) => currentPage - 1);
+    await getArticles();
+    setIsLoading(false);
+  };
+
+  const handleNextPage = async () => {
+    setIsLoading(true);
+    setPage((currentPage) => currentPage + 1);
+    await getArticles();
+    setIsLoading(false);
+  };
 
   return (
     <main>
-      <TextInput
-        className='search-input'
+      <SearchForm
         handleChange={({ target: { value } }) => setSearch(value)}
-        name='search'
-        placeholder='Pesquisar...'
-        value={search}
+        handleSubmit={handleSubmit}
+        search={search}
       />
-      {isLoading || search.length < 1 ? (
+      {isLoading ? (
         <TextCard
           className='loading'
           text={isLoading ? 'Buscando...' : 'Você ainda não buscou nada...'}
@@ -58,14 +69,14 @@ export default function Home() {
       <Button
         className='previous-btn'
         disabled={!search || page <= 1}
-        handleClick={() => setPage((currentPage) => currentPage - 1)}
+        handleClick={handlePreviousPage}
         name='Anterior'
         type='button'
       />
       <Button
         className='next-btn'
         disabled={!search || articles.length < 10}
-        handleClick={() => setPage((currentPage) => currentPage + 1)}
+        handleClick={handleNextPage}
         name='Próxima'
         type='button'
       />
