@@ -40,7 +40,7 @@ export default function ArticleCard({
   }, []);
 
   return (
-    <div className='article-card'>
+    <article className='article-card'>
       <TextCard
         as='h2'
         className='article-title'
@@ -83,6 +83,6 @@ export default function ArticleCard({
           ))
         }
       </div>
-    </div>
+    </article>
   );
 }
