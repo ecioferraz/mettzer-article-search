@@ -13,8 +13,8 @@ export default function Home() {
   useEffect(() => {
     const getArticles = async () => {
       setIsLoading(true);
-      const { data } = await getData(search, page);
-      setArticles(data.data);
+      const { data: { data } } = await getData(search, page);
+      setArticles(data);
       setIsLoading(false);
     };
 
