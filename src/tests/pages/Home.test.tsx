@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Home } from '../../pages';
 
 const SEARCH_INPUT = 'input[class="search-input"]';
+const SUBMIT_BTN = 'button[class="submit-btn"]';
 const PREVIOUS_BTN = 'button[class="previous-btn"]';
 const NEXT_BTN = 'button[class="next-btn"]';
 
@@ -40,22 +41,24 @@ describe('Pages', () => {
 
     it('should render a form', () => {
       expect(home).toBeTruthy();
-      expect(home?.children.length).toBe(4);
+      expect(home?.children.length).toBe(3);
     });
 
     it('should render a <TextInput /> and a loading message in the home page',
-      () => {
+      async () => {
         const searchInput = home?.querySelector(
           SEARCH_INPUT,
         ) as HTMLInputElement;
-      
+        const submitBtn = home?.querySelector(SUBMIT_BTN) as HTMLButtonElement;
+        
         expect(searchInput).toBeTruthy();
         expect(searchInput).toBeInstanceOf(HTMLInputElement);
-      
+        
         fireEvent.change(searchInput, { target: { value: 'test' } });
-
+        fireEvent.click(submitBtn);
+        
         const loading = home?.querySelector('.loading') as HTMLSpanElement;
-
+        
         expect(searchInput.value).toBe('test');
         expect(loading).toBeInTheDocument();
       });

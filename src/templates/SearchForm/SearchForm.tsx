@@ -17,7 +17,7 @@ export default function SearchForm({
         value={search}
       />
       <Button
-        className='search-btn'
+        className='submit-btn'
         name='Buscar'
         type='submit'
         disabled={search.length < 1}
