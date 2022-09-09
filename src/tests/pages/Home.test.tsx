@@ -41,7 +41,7 @@ describe('Pages', () => {
 
     it('should render a form', () => {
       expect(home).toBeTruthy();
-      expect(home?.children.length).toBe(4);
+      expect(home?.children.length).toBe(3);
     });
 
     it('should render a <TextInput /> and a loading message in the home page',

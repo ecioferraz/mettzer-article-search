@@ -4,7 +4,7 @@ import { act } from 'react-dom/test-utils';
 import { BrowserRouter } from 'react-router-dom';
 import { FavoriteArticles } from '../../pages';
 
-const SEARCH_INPUT = 'input[class="search-input"]';
+const SEARCH_INPUT = 'input[class="favorite-search-input"]';
 const PREVIOUS_BTN = 'button[class="previous-btn"]';
 const NEXT_BTN = 'button[class="next-btn"]';
 
