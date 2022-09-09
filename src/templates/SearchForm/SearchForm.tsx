@@ -13,12 +13,12 @@ export default function SearchForm({
         className='search-input'
         handleChange={handleChange}
         name='search'
-        placeholder='Pesquisar...'
+        placeholder='Type here...'
         value={search}
       />
       <Button
         className='submit-btn'
-        name='Buscar'
+        name='Search'
         type='submit'
         disabled={search.length < 1}
       />

@@ -32,13 +32,13 @@ export default function FavoriteArticles() {
         className='search-input'
         handleChange={({ target: { value } }) => setSearch(value)}
         name='search'
-        placeholder='Pesquisar...'
+        placeholder='Search...'
         value={search}
       />
       {isLoading ? (
         <TextCard
           className='loading'
-          text={'Buscando...'}
+          text='Searching...'
         />
       ) : (
         favoriteArticles
@@ -61,14 +61,14 @@ export default function FavoriteArticles() {
         className='previous-btn'
         disabled={!favoriteArticles.length || page <= 1}
         handleClick={() => setPage((currentPage) => currentPage - 1)}
-        name='Anterior'
+        name='<'
         type='button'
       />
       <Button
         className='next-btn'
         disabled={favoriteArticles.length < 10}
         handleClick={() => setPage((currentPage) => currentPage + 1)}
-        name='Próxima'
+        name='>'
         type='button'
       />
     </main>

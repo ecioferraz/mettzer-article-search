@@ -9,14 +9,15 @@ export default function Home() {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [totalHits, setTotalHits] = useState(0);
 
   const getArticles = async () => {
     setIsLoading(true);
     const { data } = await getData(search, page);
     setArticles(data[0].data);
+    setTotalHits(data[0].totalHits);
     setIsLoading(false);
   };
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await getArticles();
@@ -43,10 +44,22 @@ export default function Home() {
         handleSubmit={handleSubmit}
         search={search}
       />
-      {isLoading ? (
+      {
+        articles.length > 0 && (
+          <TextCard
+            as='p'
+            className='total-hits'
+            text={
+              `Articles found: ${new Intl.NumberFormat('en-US')
+                .format(totalHits)}`
+            }
+          />
+        )
+      }
+      {!articles.length || isLoading ? (
         <TextCard
           className='loading'
-          text={isLoading ? 'Buscando...' : 'Você ainda não buscou nada...'}
+          text={isLoading ? 'Searching...' : 'Start reading! Search something.'}
         />
       ) : (
         articles.map(
@@ -70,14 +83,14 @@ export default function Home() {
         className='previous-btn'
         disabled={!search || page <= 1}
         handleClick={handlePreviousPage}
-        name='Anterior'
+        name='<'
         type='button'
       />
       <Button
         className='next-btn'
         disabled={!search || articles.length < 10}
         handleClick={handleNextPage}
-        name='Próxima'
+        name='>'
         type='button'
       />
     </main>
