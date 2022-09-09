@@ -8,10 +8,9 @@ const api = axios.create({ baseURL });
 
 const apiKey = process.env.REACT_APP_API_KEY as string;
 
-const getData = async (query: string, page: number) =>
-  api.post(
-    `/search?apiKey=${apiKey}`,
-    [{query, page, pageSize}],
-  );
+const getData = async (query: string, page: number) => api.post(
+  `/search?apiKey=${apiKey}`,
+  [{query, page, pageSize}],
+);
 
 export default getData;
