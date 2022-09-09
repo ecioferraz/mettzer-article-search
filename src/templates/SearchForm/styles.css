@@ -3,7 +3,6 @@ form {
   display: flex;
   justify-content: center;
   width: 100vw;
-  margin-bottom: 3vh;
 }
 
 form > * {
@@ -11,7 +10,6 @@ form > * {
 }
 
 .search-input {
-  margin-left: 1vw;
   height: 3vh;
 }
 

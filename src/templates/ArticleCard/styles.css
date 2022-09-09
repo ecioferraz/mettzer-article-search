@@ -52,12 +52,32 @@
   font-size: 0.85em;
 }
 
+.article-source-links {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.article-source-links > * {
+  margin-bottom: .5vh;
+}
+
+.article-source {
+  margin-bottom: 1vh;
+}
+
 @media screen and (max-width: 915px) {
   .article-card {
     width: 80vw;
   }
 
+  .article-card > * {
+    margin: 2vh 2vh;
+  }
+
   .article-card .fav-btn {
+    margin: 0.5vh 0.5vh;
     opacity: 1;
   }
 }

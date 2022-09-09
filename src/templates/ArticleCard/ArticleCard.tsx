@@ -69,12 +69,12 @@ export default function ArticleCard({
         className='article-description'
         text={description}
       />
-      <div className='article-source-link'>
-        <TextCard
-          as='p'
-          className='article-source'
-          text={urls.length ? 'Links: \n' : '0 links provided.'}
-        />
+      <TextCard
+        as='p'
+        className='article-source'
+        text={urls.length ? 'Source: \n' : '0 links provided.'}
+      />
+      <div className='article-source-links'>
         {
           urls.map((url, i) => (
             <ExternalLink
