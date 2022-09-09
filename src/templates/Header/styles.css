@@ -2,7 +2,7 @@ header {
   align-items: center;
   display: flex;
   justify-content: center;
-  background-color: #f05454;
+  background-color: #CDBE78;
   border-bottom: 1px groove #fff;
   box-shadow: #858383 0 2px 15px;
   color: #fff;
@@ -30,7 +30,7 @@ nav {
 
 .home-link:hover,
 .favorites-link:hover {
-  background-color: rgba(255, 130, 130, 0.6);
+  background-color: rgb(6, 100, 101, 0.6);
   border-radius: 0 0 1px 1px;
   box-shadow: #a2a2a2 0 1px 1px;
   transition: 0.7s;

@@ -60,7 +60,9 @@
 }
 
 .article-source-links > * {
+  color: #066163;
   margin-bottom: .5vh;
+  text-decoration: none;
 }
 
 .article-source {
