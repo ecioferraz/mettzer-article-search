@@ -4,6 +4,8 @@ import { IArticle } from '../../interfaces';
 import getData from '../../services/APIRequests';
 import { ArticleCard, SearchForm } from '../../templates';
 
+import './styles.css';
+
 export default function Home() {
   const [articles, setArticles] = useState<IArticle[]>([]);
   const [search, setSearch] = useState('');
@@ -79,20 +81,22 @@ export default function Home() {
           )
         )
       )}
-      <Button
-        className='previous-btn'
-        disabled={!search || page <= 1}
-        handleClick={handlePreviousPage}
-        name='<'
-        type='button'
-      />
-      <Button
-        className='next-btn'
-        disabled={!search || articles.length < 10}
-        handleClick={handleNextPage}
-        name='>'
-        type='button'
-      />
+      <div className='navigation-btns'>
+        <Button
+          className='previous-btn'
+          disabled={!search || page <= 1}
+          handleClick={handlePreviousPage}
+          name='<'
+          type='button'
+        />
+        <Button
+          className='next-btn'
+          disabled={!search || articles.length < 10}
+          handleClick={handleNextPage}
+          name='>'
+          type='button'
+        />
+      </div>
     </main>
   );
 }

@@ -1,0 +1,21 @@
+.total-hits {
+  margin-top: 0;
+}
+
+.navigation-btns {
+  bottom: 3vh;
+  display: flex;
+  justify-content: space-evenly;
+  position: fixed;
+  width: 10vw;
+}
+
+.loading {
+  margin-top: 5vh;
+}
+
+@media screen and (max-width: 915px) {
+  .navigation-btns {
+    width: 25vw;
+  }
+}
