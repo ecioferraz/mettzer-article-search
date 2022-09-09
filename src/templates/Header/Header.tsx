@@ -1,6 +1,8 @@
 import React from 'react';
 import { RedirectLink } from '../../components';
 
+import './styles.css';
+
 export default function Header() {
   return (
     <header>
