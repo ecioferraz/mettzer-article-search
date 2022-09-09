@@ -1,0 +1,12 @@
+.favorite-search-input {
+  height: 3vh;
+  margin-bottom: 3vh;
+  margin-left: 0;
+  width: 30vw;
+}
+
+@media screen and (max-width: 915px) {
+  .favorite-search-input {
+    width: 60vw;
+  }
+}

@@ -4,6 +4,8 @@ import { IArticleCard } from '../../interfaces';
 import { readFavoriteArticles } from '../../services/localStorage';
 import { ArticleCard } from '../../templates';
 
+import './styles.css';
+
 export default function FavoriteArticles() {
   const [favoriteArticles, setFavoriteArticles] = useState<IArticleCard[]>(
     readFavoriteArticles(),
@@ -29,16 +31,20 @@ export default function FavoriteArticles() {
   return (
     <main>
       <TextInput
-        className='search-input'
+        className='favorite-search-input'
         handleChange={({ target: { value } }) => setSearch(value)}
         name='search'
         placeholder='Search...'
         value={search}
       />
-      {isLoading ? (
+      {!favoriteArticles.length || isLoading ? (
         <TextCard
           className='loading'
-          text='Searching...'
+          text={
+            isLoading
+              ? 'Getting favorites...'
+              : 'You haven\'t favorited any articles yet.'
+          }
         />
       ) : (
         favoriteArticles
@@ -57,20 +63,22 @@ export default function FavoriteArticles() {
             )
           )
       )}
-      <Button
-        className='previous-btn'
-        disabled={!favoriteArticles.length || page <= 1}
-        handleClick={() => setPage((currentPage) => currentPage - 1)}
-        name='<'
-        type='button'
-      />
-      <Button
-        className='next-btn'
-        disabled={favoriteArticles.length < 10}
-        handleClick={() => setPage((currentPage) => currentPage + 1)}
-        name='>'
-        type='button'
-      />
+      <div className='navigation-btns'>
+        <Button
+          className='previous-btn'
+          disabled={!favoriteArticles.length || page <= 1}
+          handleClick={() => setPage((currentPage) => currentPage - 1)}
+          name='<'
+          type='button'
+        />
+        <Button
+          className='next-btn'
+          disabled={favoriteArticles.length < 10}
+          handleClick={() => setPage((currentPage) => currentPage + 1)}
+          name='>'
+          type='button'
+        />
+      </div>
     </main>
   );
 }
