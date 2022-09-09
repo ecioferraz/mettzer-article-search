@@ -12,16 +12,19 @@ export default function FavoriteArticles() {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
+  const filterFavoriteArticles = () => favoriteArticles
+    .filter(({ title }) => title.toLowerCase().includes(search.toLowerCase()));
+
   useEffect(() => {
     setIsLoading(true);
-    setFavoriteArticles(
-      search.length
-        ? favoriteArticles.filter(({ title }) =>
-          title.toLowerCase().includes(search.toLowerCase()))
-        : readFavoriteArticles(),
-    );
+    if (search.length) {
+      setFavoriteArticles(filterFavoriteArticles());
+      setPage(1);
+    } else {
+      setFavoriteArticles(readFavoriteArticles());
+    }
     setIsLoading(false);
-  }, [search, page]);
+  }, [search]);
 
   return (
     <main>
@@ -38,19 +41,21 @@ export default function FavoriteArticles() {
           text={'Buscando...'}
         />
       ) : (
-        favoriteArticles.map(
-          ({ authors, description, id, title, type, urls }) => (
-            <ArticleCard
-              authors={authors}
-              description={description}
-              id={id}
-              key={id}
-              title={title}
-              type={type}
-              urls={urls}
-            />
+        favoriteArticles
+          .slice((page > 1 ? (page - 1) * 10 : 0), page * 10)
+          .map(
+            ({ authors, description, id, title, type, urls }) => (
+              <ArticleCard
+                authors={authors}
+                description={description}
+                id={id}
+                key={id}
+                title={title}
+                type={type}
+                urls={urls}
+              />
+            )
           )
-        )
       )}
       <Button
         className='previous-btn'
