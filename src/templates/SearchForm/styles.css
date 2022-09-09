@@ -1,0 +1,25 @@
+form {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  margin-bottom: 3vh;
+}
+
+form > * {
+  margin: 1.8vh;
+}
+
+.search-input {
+  margin-left: 1vw;
+  height: 3vh;
+}
+
+.submit-btn {
+  align-items: center;
+  box-shadow: #858383 0 2px 7.5px;
+  display: flex;
+  font-weight: 500;
+  height: 3.5vh;
+  padding: 0 10px;
+}

@@ -2,6 +2,8 @@ import React from 'react';
 import { Button, TextInput } from '../../components';
 import ISearchForm from './ISearchForm';
 
+import './styles.css';
+
 export default function SearchForm({
   handleChange,
   handleSubmit,
