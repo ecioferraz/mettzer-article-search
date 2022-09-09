@@ -7,6 +7,8 @@ import {
   removeArticle,
 } from '../../services/localStorage';
 
+import './styles.css';
+
 export default function ArticleCard({
   authors,
   description,
@@ -67,16 +69,17 @@ export default function ArticleCard({
         className='article-description'
         text={description}
       />
-      <div>
+      <div className='article-source-link'>
         <TextCard
           as='p'
           className='article-source'
-          text={urls.length > 1 ? 'Fontes: \n' : 'Fonte: \n'}
+          text={urls.length ? 'Links: \n' : '0 links provided.'}
         />
         {
           urls.map((url, i) => (
             <ExternalLink
-              className={`article-source-link-${i + 1}`}
+              className={'article-source-link'}
+              i={i}
               key={i}
               url={url}
             />
