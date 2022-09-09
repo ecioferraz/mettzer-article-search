@@ -23,6 +23,7 @@ describe('Components', () => {
         root?.render(
           <ExternalLink
             className='test className'
+            i={0}
             url='test url'
           />
         );

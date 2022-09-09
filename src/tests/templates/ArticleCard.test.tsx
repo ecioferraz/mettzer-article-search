@@ -9,8 +9,7 @@ const ARTICLE_TYPE = 'p[class="article-type"]';
 const ARTICLE_AUTHORS = 'p[class="article-authors"';
 const ARTICLE_DESCRIPTION = 'p[class="article-description"';
 const ARTICLE_SOURCE = 'p[class="article-source"';
-const ARTICLE_SOURCE_LINK_1 = 'a[class="article-source-link-1"';
-const ARTICLE_SOURCE_LINK_2 = 'a[class="article-source-link-2"';
+const ARTICLE_SOURCE_LINK = 'div[class="article-source-link"';
 
 describe('Templates', () => {
   let container: HTMLDivElement | null = null;
@@ -105,18 +104,18 @@ describe('Templates', () => {
   
         expect(articleSource).toBeTruthy();
         expect(articleSource).toBeInstanceOf(HTMLParagraphElement);
-        expect(articleSource?.textContent).toBe('Fontes: \n');
+        expect(articleSource?.textContent).toBe('Links: \n');
       });
   
       it('should render two <ExternalLink /> as the article\'s source links',
         () => {
-          const articalSourceLinkOne =
-            articleCard?.querySelector(ARTICLE_SOURCE_LINK_1);
+          const articalSourceLink =
+            articleCard?.querySelector(ARTICLE_SOURCE_LINK)?.children[1];
           const articalSourceLinkTwo =
-          articleCard?.querySelector(ARTICLE_SOURCE_LINK_2);
+          articleCard?.querySelector(ARTICLE_SOURCE_LINK)?.children[2];
     
-          expect(articalSourceLinkOne).toBeTruthy();
-          expect(articalSourceLinkOne).toBeInstanceOf(HTMLAnchorElement);
+          expect(articalSourceLink).toBeTruthy();
+          expect(articalSourceLink).toBeInstanceOf(HTMLAnchorElement);
           expect(articalSourceLinkTwo).toBeTruthy();
           expect(articalSourceLinkTwo).toBeInstanceOf(HTMLAnchorElement);
         });
@@ -145,19 +144,19 @@ describe('Templates', () => {
   
         expect(articleSource).toBeTruthy();
         expect(articleSource).toBeInstanceOf(HTMLParagraphElement);
-        expect(articleSource?.textContent).toBe('Fonte: \n');
+        expect(articleSource?.textContent).toBe('Links: \n');
       });
 
       it('should render a <ExternalLink /> as the article\'s source link',
         () => {
           const articalSourceLinkOne =
-            articleCard?.querySelector(ARTICLE_SOURCE_LINK_1);
+            articleCard?.querySelector(ARTICLE_SOURCE_LINK)?.children[1];
           const articalSourceLinkTwo =
-          articleCard?.querySelector(ARTICLE_SOURCE_LINK_2);
+          articleCard?.querySelector(ARTICLE_SOURCE_LINK)?.children[2];
     
           expect(articalSourceLinkOne).toBeTruthy();
           expect(articalSourceLinkOne).toBeInstanceOf(HTMLAnchorElement);
-          expect(articalSourceLinkTwo).toBeNull();
+          expect(articalSourceLinkTwo).toBe(undefined);
         });
     });
   });
