@@ -9,7 +9,7 @@ const ARTICLE_TYPE = 'p[class="article-type"]';
 const ARTICLE_AUTHORS = 'p[class="article-authors"';
 const ARTICLE_DESCRIPTION = 'p[class="article-description"';
 const ARTICLE_SOURCE = 'p[class="article-source"';
-const ARTICLE_SOURCE_LINK = 'div[class="article-source-link"';
+const ARTICLE_SOURCE_LINK = 'div[class="article-source-links"';
 
 describe('Templates', () => {
   let container: HTMLDivElement | null = null;
@@ -46,7 +46,7 @@ describe('Templates', () => {
   
       it('should render a ArticleCard', () => {
         expect(articleCard).toBeTruthy();
-        expect(articleCard?.children.length).toBe(6);
+        expect(articleCard?.children.length).toBe(7);
       });
   
       it('should render a <TextCard /> as the article\'s title', () => {
@@ -104,15 +104,15 @@ describe('Templates', () => {
   
         expect(articleSource).toBeTruthy();
         expect(articleSource).toBeInstanceOf(HTMLParagraphElement);
-        expect(articleSource?.textContent).toBe('Links: \n');
+        expect(articleSource?.textContent).toBe('Source: \n');
       });
   
       it('should render two <ExternalLink /> as the article\'s source links',
         () => {
           const articalSourceLink =
-            articleCard?.querySelector(ARTICLE_SOURCE_LINK)?.children[1];
+            articleCard?.querySelector(ARTICLE_SOURCE_LINK)?.children[0];
           const articalSourceLinkTwo =
-          articleCard?.querySelector(ARTICLE_SOURCE_LINK)?.children[2];
+          articleCard?.querySelector(ARTICLE_SOURCE_LINK)?.children[1];
     
           expect(articalSourceLink).toBeTruthy();
           expect(articalSourceLink).toBeInstanceOf(HTMLAnchorElement);
@@ -144,15 +144,15 @@ describe('Templates', () => {
   
         expect(articleSource).toBeTruthy();
         expect(articleSource).toBeInstanceOf(HTMLParagraphElement);
-        expect(articleSource?.textContent).toBe('Links: \n');
+        expect(articleSource?.textContent).toBe('Source: \n');
       });
 
       it('should render a <ExternalLink /> as the article\'s source link',
         () => {
           const articalSourceLinkOne =
-            articleCard?.querySelector(ARTICLE_SOURCE_LINK)?.children[1];
+            articleCard?.querySelector(ARTICLE_SOURCE_LINK)?.children[0];
           const articalSourceLinkTwo =
-          articleCard?.querySelector(ARTICLE_SOURCE_LINK)?.children[2];
+          articleCard?.querySelector(ARTICLE_SOURCE_LINK)?.children[1];
     
           expect(articalSourceLinkOne).toBeTruthy();
           expect(articalSourceLinkOne).toBeInstanceOf(HTMLAnchorElement);
