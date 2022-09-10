@@ -1,11 +1,12 @@
 header {
   align-items: center;
-  display: flex;
-  justify-content: center;
   background-color: #CDBE78;
   border-bottom: 1px groove #fff;
   box-shadow: #858383 0 2px 15px;
   color: #fff;
+  display: flex;
+  font-family: 'Cinzel';
+  justify-content: center;
   margin-bottom: 3vh;
   width: 100vw;
 }

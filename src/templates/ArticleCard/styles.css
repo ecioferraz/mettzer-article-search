@@ -40,6 +40,7 @@
 }
 
 .article-title {
+  font-family: 'Oswald';
   font-size: 1.8em;
   margin: 1vh 0;
 }
@@ -50,6 +51,13 @@
 
 .article-authors {
   font-size: 0.85em;
+}
+
+.article-description {
+  font-family: 'Merriweather';
+  font-size: 10pt;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .article-source-links {
