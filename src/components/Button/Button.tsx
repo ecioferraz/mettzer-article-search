@@ -1,5 +1,11 @@
 import React from 'react';
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import {
+  AiFillStar,
+  AiOutlineArrowLeft,
+  AiOutlineArrowRight,
+  AiOutlineSearch,
+  AiOutlineStar,
+} from 'react-icons/ai';
 import IButton from './IButton';
 
 export default function Button({
@@ -15,6 +21,12 @@ export default function Button({
       return <AiFillStar color='#FFF38C' />;
     case 'unfav':
       return <AiOutlineStar />;
+    case 'search':
+      return <AiOutlineSearch />;
+    case 'previous':
+      return <AiOutlineArrowLeft />;
+    case 'next':
+      return <AiOutlineArrowRight />;
     default:
       return name;
     }

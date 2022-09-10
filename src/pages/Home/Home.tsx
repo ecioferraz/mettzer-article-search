@@ -86,14 +86,14 @@ export default function Home() {
           className='previous-btn'
           disabled={!search || page <= 1}
           handleClick={handlePreviousPage}
-          name='<'
+          name='previous'
           type='button'
         />
         <Button
           className='next-btn'
           disabled={!search || articles.length < 10}
           handleClick={handleNextPage}
-          name='>'
+          name='next'
           type='button'
         />
       </div>

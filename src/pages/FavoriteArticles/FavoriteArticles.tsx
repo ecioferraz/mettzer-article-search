@@ -68,14 +68,14 @@ export default function FavoriteArticles() {
           className='previous-btn'
           disabled={!favoriteArticles.length || page <= 1}
           handleClick={() => setPage((currentPage) => currentPage - 1)}
-          name='<'
+          name='previous'
           type='button'
         />
         <Button
           className='next-btn'
           disabled={favoriteArticles.length < 10}
           handleClick={() => setPage((currentPage) => currentPage + 1)}
-          name='>'
+          name='next'
           type='button'
         />
       </div>
