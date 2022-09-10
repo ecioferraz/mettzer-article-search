@@ -15,7 +15,7 @@ form > * {
 
 .submit-btn {
   align-items: center;
-  background: rgb(6, 97, 99, .8);
+  background: rgb(6, 97, 99, 0.8);
   border: none;
   border-radius: 5px;
   box-shadow: #858383 0 2px 7.5px;
@@ -24,15 +24,21 @@ form > * {
   display: flex;
   font-weight: 500;
   height: 3.5vh;
-  padding: 0 10px;
+  padding: 0.5vh 0.8vw;
   transition: 0.5s;
 }
 
 .submit-btn:disabled {
-  background: rgb(6, 97, 99, .6);
+  background: rgb(6, 97, 99, 0.6);
   cursor: default;
 }
 
 .submit-btn:hover {
   background: #066163;
+}
+
+@media screen and (max-width: 915px) {
+  .submit-btn {
+    padding: 1vh 2vw;
+  }
 }

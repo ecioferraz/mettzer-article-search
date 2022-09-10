@@ -15,7 +15,7 @@
 }
 
 .fav-btn {
-  background: rgb(60, 60, 60);
+  background: #3c3c3c;
   border: none;
   border-radius: 5px;
   color: #fff;
@@ -69,7 +69,7 @@
 
 .article-source-links > * {
   color: #066163;
-  margin-bottom: .5vh;
+  margin-bottom: 0.5vh;
   text-decoration: none;
 }
 
