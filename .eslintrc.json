@@ -41,6 +41,6 @@
           "ignoreComments": true
       }
       ],
-      "complexity": ["error", 5]
+      "complexity": ["error", 10]
   }
 }

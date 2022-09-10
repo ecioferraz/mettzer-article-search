@@ -1,0 +1,42 @@
+.total-hits {
+  margin-top: 0;
+}
+
+.navigation-btns {
+  bottom: 3vh;
+  display: flex;
+  justify-content: space-evenly;
+  position: fixed;
+  width: 10vw;
+}
+
+.navigation-btns > * {
+  align-items: center;
+  background: rgb(6, 97, 99, 0.8);
+  border: none;
+  border-radius: 5px;
+  box-shadow: #858383 0 2px 7.5px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-weight: 500;
+  height: 3.5vh;
+  padding: 0 5px;
+  transition: 0.5s;
+}
+
+.previous-btn:disabled,
+.next-btn:disabled {
+  background: rgb(6, 97, 99, 0.6);
+  cursor: default;
+}
+
+.loading {
+  margin-top: 5vh;
+}
+
+@media screen and (max-width: 915px) {
+  .navigation-btns {
+    width: 25vw;
+  }
+}
