@@ -28,13 +28,13 @@ form > * {
   transition: 0.5s;
 }
 
+.submit-btn:hover {
+  background: #066163;
+}
+
 .submit-btn:disabled {
   background: rgb(6, 97, 99, 0.6);
   cursor: default;
-}
-
-.submit-btn:hover {
-  background: #066163;
 }
 
 @media screen and (max-width: 915px) {
