@@ -20,6 +20,7 @@ export default function Home() {
     setTotalHits(data[0].totalHits);
     setIsLoading(false);
   };
+  
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await getArticles();
