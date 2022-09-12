@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mettzer-article-search/static/css/main.5979a6cd.css",
-    "main.js": "/mettzer-article-search/static/js/main.089c6ada.js",
+    "main.js": "/mettzer-article-search/static/js/main.5c03c617.js",
     "static/js/787.22505391.chunk.js": "/mettzer-article-search/static/js/787.22505391.chunk.js",
     "index.html": "/mettzer-article-search/index.html",
     "main.5979a6cd.css.map": "/mettzer-article-search/static/css/main.5979a6cd.css.map",
-    "main.089c6ada.js.map": "/mettzer-article-search/static/js/main.089c6ada.js.map",
+    "main.5c03c617.js.map": "/mettzer-article-search/static/js/main.5c03c617.js.map",
     "787.22505391.chunk.js.map": "/mettzer-article-search/static/js/787.22505391.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5979a6cd.css",
-    "static/js/main.089c6ada.js"
+    "static/js/main.5c03c617.js"
   ]
 }
